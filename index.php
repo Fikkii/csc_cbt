@@ -1,3 +1,14 @@
+<?php
+$course = isset($_GET['course']) ? $_GET['course'] : '';
+
+if ($course){
+    session_start();
+    $_SESSION['course'] = $course;
+    header("location: ./cbt");
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
