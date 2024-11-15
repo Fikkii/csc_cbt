@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="../assets/jquery.min.js"></script>
-        <script src="../assets/js.cookie.min.js"></script>
-        <script src="../assets/script.js"></script>
+        <script src="/assets/jquery.min.js"></script>
+        <script src="/assets/js.cookie.min.js"></script>
+        <script src="/assets/script.js"></script>
         <link rel="stylesheet" href="/assets/simple.css">
         <link rel="stylesheet" href="/assets/style.css">
         <title>CBT Quiz</title>
