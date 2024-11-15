@@ -3,9 +3,9 @@ function connect(){
 
 $dbconfig = [
     'username'=> 'm4303_fikki',
-    'password'=> 'Bunmisegun"',
+    'password'=> 'Bunmisegun"2016',
     'host'=> 'mysql6.serv00.com',
-    'database'=> 'csc'
+    'database'=> 'm4303_csc'
 ];
 
     $db = new mysqli($dbconfig['host'], $dbconfig['username'], $dbconfig['password'], $dbconfig['database']);
