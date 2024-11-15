@@ -2,9 +2,9 @@
 function connect(){
 
 $dbconfig = [
-    'username'=> 'root',
-    'password'=> '',
-    'host'=> 'localhost',
+    'username'=> 'm4303_fikki',
+    'password'=> 'Bunmisegun"',
+    'host'=> 'mysql6.serv00.com',
     'database'=> 'csc'
 ];
 
