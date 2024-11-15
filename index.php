@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     </head>
-    <body style='height: 100vh;'>
+    <body style='height: 100vh; background-color:purple'>
         <div style='background-color: #c3a75e' class="text-white h-50 d-flex justify-content-center align-items-center gap-2 flex-column text-center p-3"> 
             <a href="./admin" class="align-self-end btn border border-3">
                 <i data-feather='user'></i>
