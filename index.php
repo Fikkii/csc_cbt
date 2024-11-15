@@ -4,7 +4,7 @@ $course = isset($_GET['course']) ? $_GET['course'] : '';
 if ($course){
     session_start();
     $_SESSION['course'] = $course;
-    header("location: ./cbt");
+    header("location: cbt");
 }
 
 ?>
