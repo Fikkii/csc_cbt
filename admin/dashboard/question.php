@@ -170,8 +170,8 @@ while(list($id, $course) = $category->fetch_array()){
         <table class="table table-hover">
             <thead>
                 <tr scope='row'>
-                    <td>id</td>
-                    <td colspan=4>Courses</td>
+                    <td>Id</td>
+                    <td colspan=4>Questions</td>
                 </tr>
             </thead>
             <tbody>
