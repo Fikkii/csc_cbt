@@ -131,22 +131,22 @@ if($change_id){
 
             <div class="d-flex flex-column gap-2">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="A">
+                    <input class="form-check-input" type="radio" name="correct" value="1">
                     <label class="form-check-label">A.</label>
                     <input type="text" name="A" class="form-control w-50"></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="B">
+                    <input class="form-check-input" type="radio" name="correct" value="1">
                     <label class="form-check-label">B.</label>
                     <input type="text" name="B" class="form-control w-50"></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="C">
+                    <input class="form-check-input" type="radio" name="correct" value="1">
                     <label class="form-check-label">C.</label>
                     <input type="text" name="C" class="form-control w-50"></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="D">
+                    <input class="form-check-input" type="radio" name="correct" value="1">
                     <label class="form-check-label">D.</label>
                     <input type="text" name="D" class="form-control w-50"></input>
                 </div>
