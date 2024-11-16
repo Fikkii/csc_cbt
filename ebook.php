@@ -25,7 +25,6 @@
                 <i data-feather='twitter'></i>
                 <i data-feather='youtube'></i>
                 <i data-feather='whatsapp'></i>
-
             </div>
             <b class="mt-4">DOWNLOAD PDF REQUIRED FOR COMPUTER SCIENCE STUDENTS...</b>
             <button class="btn dropdown-toggle" data-bs-toggle='collapse' data-bs-target='#announcement'>Learn More</button>
