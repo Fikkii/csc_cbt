@@ -99,7 +99,6 @@ if($change_id){
                         <li class='nav-item border border-3 px-3'><a class='nav-link' href='question.php'>questions</a></li>
                         <li class='nav-item border border-3 px-3'><a class='nav-link' href='category.php'>category</a></li>
                         <li class='nav-item border border-3 px-3'><a class='nav-link' href='pdf.php'>pdf</a></li>
-                        <li class='nav-item border border-3 px-3'><a class='nav-link' href='question.php'>questions</a></li>
                         <li class='nav-item border border-3 px-3'><a class='nav-link' href='user.php'>user</a></li>
                     </ul>
                 </div>
