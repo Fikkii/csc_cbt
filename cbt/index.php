@@ -61,3 +61,7 @@ html_header("CBT");
         </form>
     </body>
 </html>
+
+<?php
+html_footer();
+?>

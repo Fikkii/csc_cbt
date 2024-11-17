@@ -55,3 +55,7 @@ if ($category && $time && $total) {
         <?php echo $init_script ?>
     </body>
 </html>
+
+<?php
+html_footer();
+?>

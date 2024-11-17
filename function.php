@@ -60,7 +60,7 @@ function html_header($title, $user = false){
             <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
                 <header class='navbar p-2 rounded'>
                     <a href='/' class='navbar-brand'>
-                        <img src='images/logo.png' height=34 class='d-inline-block align-text-center'><b>200LVL CSC</b>
+                        <img src='/images/logo.png' height=34 class='d-inline-block align-text-center'><b>200LVL CSC</b>
                     </a>
                     <button class='navbar-toggler' data-bs-target='#offnavs' data-bs-toggle='offcanvas'>
                         <span class='navbar-toggler-icon'></span>
