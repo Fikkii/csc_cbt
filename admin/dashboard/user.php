@@ -136,19 +136,11 @@ if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
                 <tbody>
 <?php
 if($user->num_rows > 0){
-<<<<<<< HEAD
     while(list($id, $username) = $user->fetch_array()){
         $data = <<< script
             <tr scope='row'>
                 <td>$id</td>
                 <td>$username</td>
-=======
-    while(list($id, $course) = $user->fetch_array()){
-        $data = <<< script
-            <tr scope='row'>
-                <td>$id</td>
-                <td>$course</td>
->>>>>>> d61ea2f51fa23b463ce3661987c1d1e48d59009d
                 <td class='w-25'>
                         <td><a class='btn btn-warning btn-sm p-1' href='?change=$id'><i data-feather='edit'></i></a></td>
                         <td><a class='btn btn-danger btn-sm p-1' href='?delete=$id'><i data-feather='trash'></i></a></td>
