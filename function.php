@@ -85,6 +85,9 @@ function html_header($title, $user = false){
                             <ul class='list-group mb-3'>
                                 <li class='list-group-item list-group-item-action'><a class='nav-link' href='#events'>Events</a></li>
                             </ul>
+                            <ul class='list-group mb-3'>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='/admin'>Login</a></li>
+                            </ul>
                         </div>
                     </div>
         </header>
@@ -126,6 +129,9 @@ $adminHTML = <<< HTML
                         </ul>
                         <ul class='list-group mb-3'>
                             <li class='list-group-item list-group-item-action'><a class='nav-link' href='event.php'>Events</a></li>
+                        </ul>
+                        <ul class='list-group mb-3'>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='/admin'>Login</a></li>
                         </ul>
                     </div>
                 </div>
