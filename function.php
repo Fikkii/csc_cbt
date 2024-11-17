@@ -101,7 +101,7 @@ $adminHTML = <<< HTML
         <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
             <header class='navbar p-2 rounded'>
             <a href='/' class='navbar-brand'>
-                <img src='images/logo.png' height=24 class='d-inline-block align-text-top'>200LVL CSC
+                <img src='/images/logo.png' height=24 class='d-inline-block align-text-top'>200LVL CSC
             </a>
 
                 <button class='navbar-toggler' data-bs-target='#offnavs' data-bs-toggle='offcanvas'>

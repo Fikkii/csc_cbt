@@ -18,7 +18,7 @@ $conn = connect();
 
 $category = $conn->query("SELECT id, course FROM category");
 
-html_header("CBT");
+html_header("CBT", true);
 ?>
     <body>
         <form class='d-flex flex-column gap-2' method='GET' action=<?php echo $_SERVER['PHP_SELF'] ?>>

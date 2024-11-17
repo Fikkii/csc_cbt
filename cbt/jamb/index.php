@@ -24,17 +24,8 @@ if ($category && $time && $total) {
     }else{
         header('location: ./cbt');
     }
+html_header('CBT', true)
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="/assets/jquery.min.js"></script>
-        <script src="/assets/js.cookie.min.js"></script>
-        <script src="/assets/script.js"></script>
-        <title>CBT Quiz</title>
-    </head>
     <body>
         <div class='grid-container'>
             <div class='d-flex justify-content-between'>
