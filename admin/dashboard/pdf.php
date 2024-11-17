@@ -19,9 +19,11 @@ $delete_id = isset($_GET['delete']) ? $_GET['delete'] : '';
 $change_id = isset($_GET['change']) ? $_GET['change'] : '';
 $filter_id = isset($_GET['filter']) ? $_GET['filter'] : '';
 
-$form_submit = isset($_POST['form-submit']) ? $_POST['form-submit'] : '';
-$pdf_file = isset($_FILES['pdffile']) ? $_FILES['pdffile'] : '';
-
+//PDF upload functionality discontinued at the moment
+//
+//$form_submit = isset($_POST['form-submit']) ? $_POST['form-submit'] : '';
+//$pdf_file = isset($_FILES['pdffile']) ? $_FILES['pdffile'] : '';
+//
 //if($form_submit){
 //    $stmt = $conn->prepare("INSERT INTO category(course, unit) VALUES (?,?)");
 //    $stmt->bind_param('ss', $course_code, $course_unit);
@@ -45,10 +47,6 @@ function uploadPDF(){
         $im->clear(); 
         $im->destroy();
     }
-}
-
-if($form_submit){
-    uploadPDF();
 }
 
 function fetchPage(){
@@ -114,9 +112,9 @@ if($change_id){
         <div>
 
             <h2>ADD NEW PDF</h2>
-            <form onsubmit='false' action='<?php $_SERVER['PHP_SELF'] ?>' method='POST' enctype='multipart/form-data' class='input-group'>
-                <input name='pdffile' type='file' class='form-control' placeholder='course code' required>
-                <input  name='form-submit' type='submit' class='form-control btn btn-success' required>
+            <form onsubmit='return false' action='<?php $_SERVER['PHP_SELF'] ?>' method='POST' enctype='multipart/form-data' class='input-group'>
+                <input name='pdffile' type='file' class='form-control' placeholder='course code' required disabled>
+                <input  name='form-submit' type='submit' class='form-control btn btn-success' required disabled>
             </form>
             <small class='text-info'>This section has currently been discontinued, contact webmaster for more info</small>
             <br>
