@@ -31,7 +31,7 @@ html_header('Dashboard Home');
                 <div style='background-color: #c3a75e; height: 10px;' ></div>
                 <div class="card-body">
                     <div class="card-title"><b>Questions</b></div>
-                    <a href="questions.php" class="btn btn-light border border-4 w-100 mt-2">Show</a>
+                    <a href="question.php" class="btn btn-light border border-4 w-100 mt-2">Show</a>
                 </div>
             </div>
         </div>

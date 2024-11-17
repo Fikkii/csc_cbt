@@ -58,11 +58,13 @@ function renderQuestions(index){
     currentIndex = index;
 
     //rendering questions with options on screen
-    qElement.append(`<div class='quiz-info'><b>Question ${++index}(<small>Read The questions carefully and select your question</small>)</b><div>${ques.question}</div></div>`);
-    optElement.append(`<label><input type='radio' name='option' id='A' ${ques['selected'] == 'A' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.A}</input></label>`);
-    optElement.append(`<label><input type='radio' name='option'  ${ques['selected'] == 'B' ? 'checked' : ''}  id='B' onclick=selectOpt(this)>${ques.option.B}</input></label>`);
-    optElement.append(`<label><input type='radio'  ${ques['selected'] == 'C' ? 'checked' : ''}  name='option' id='C' onclick=selectOpt(this)>${ques.option.C}</input></label>`);
-    optElement.append(`<label><input type='radio' name='option'  ${ques['selected'] == 'D' ? 'checked' : ''}  id='D' onclick=selectOpt(this)>${ques.option.D}</input></label>`);
+    qElement.append(`<div class='mt-3'><b>Question ${++index}(<small>Read The questions carefully and select your question</small>)</b><div class='my-2'>${ques.question}</div></div>`);
+    optElement.append(`<div class='row g-2 ms-3'>
+        <label><input class='form-radio me-2' type='radio' name='option' id='A' ${ques['selected'] == 'A' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.A}</label>
+        <label><input class='form-radio me-2' type='radio' name='option' id='B' ${ques['selected'] == 'B' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.B}</label>
+        <label><input class='form-radio me-2' type='radio' name='option' id='C' ${ques['selected'] == 'C' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.C}</label>
+        <label><input class='form-radio me-2' type='radio' name='option' id='D' ${ques['selected'] == 'D' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.D}</label>
+    </div>`);
 
     pagination()
 }
@@ -79,7 +81,7 @@ function pagination(){
     el = $('#pagination'); el.empty();
 
     $.each(questions, (index, value)=>{
-        el.append(`<button ${value.selected ? 'class="selected"' : ''} onclick='renderQuestions(${index})'>${++index}</button>`)
+        el.append(`<button class='btn m-1 ${value.selected ? 'btn-success' : 'btn-light'}'  onclick='renderQuestions(${index})'>${++index}</button>`)
     })
 }
 

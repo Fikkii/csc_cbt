@@ -57,13 +57,16 @@ $html = <<< HTML
             <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         </head>
         <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
-            <header class='navbar'>
+            <header class='fluid-container d-flex justify-content-between text-bg-dark p-2 rounded'>
+                <div class='dropdown'>
+                    <button class='btn' data-bs-toggle='dropdown'><i data-feather='settings'></i></button>
+                    <ul class='dropdown-menu'>
+                        <li><a  class='dropdown-item' href='settings.php' class='dropdown-item-link'>Change Password</a></li>
+                    </ul>
+                </div>
                 <h3>200LVL CSC</h3>
-                <div>
-                    <i data-feather='settings'></i>
 
-                    <button class='navbar-toggler border-0'>
-                        <span class='navbar-toggler-icon' data-bs-toggle='offcanvas' data-bs-target='#offnav'></span>
+                    <button class='navbar-toggler border-0' data-bs-toggle='offcanvas' data-bs-target='#offnav'><i data-feather='menu'></i>
                     </button>
                 <div>
                 <div id='offnav' class='offcanvas offcanvas-end'>
@@ -87,7 +90,6 @@ $html = <<< HTML
                 </div>
             </header>
             <div class='card p-4 text-bg-primary opacity-1'>
-                <h2>Welcome</h2>
                 <small>service to Humanity is the rent we pay for our stay here on earth - <i>Mohammed Ali</i></small>
             </div>
 
