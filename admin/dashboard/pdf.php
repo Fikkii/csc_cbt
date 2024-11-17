@@ -19,21 +19,43 @@ $delete_id = isset($_GET['delete']) ? $_GET['delete'] : '';
 $change_id = isset($_GET['change']) ? $_GET['change'] : '';
 $filter_id = isset($_GET['filter']) ? $_GET['filter'] : '';
 
-$form_submit = isset($_GET['form-submit']) ? $_GET['form-submit'] : '';
-$file = isset($_GET['course-code']) ? $_GET['course-code'] : '';
+$form_submit = isset($_POST['form-submit']) ? $_POST['form-submit'] : '';
+$pdf_file = isset($_FILES['pdffile']) ? $_FILES['pdffile'] : '';
+
+//if($form_submit){
+//    $stmt = $conn->prepare("INSERT INTO category(course, unit) VALUES (?,?)");
+//    $stmt->bind_param('ss', $course_code, $course_unit);
+//    $pdf = $stmt->execute();
+//    header('location: '.$_SERVER['PHP_SELF']);
+//}
+
+function uploadPDF(){
+    global $pdf_file;
+    $target_dir = "./trial/";
+    $target_file = $target_dir.basename($pdf_file['name']);
+    if(is_uploaded_file($pdf_file['tmp_name'])){
+        move_uploaded_file($pdf_file['tmp_name'], $target_file);
+        // instantiate Imagick 
+        $im = new Imagick();
+
+        $im->setResolution(300,300);
+        $im->readimage($_SERVER['DOCUMENT_ROOT'].'/admin/dashboard/english.pdf'); 
+        $im->setImageFormat('jpeg');    
+        $im->writeImage('thumb.jpg'); 
+        $im->clear(); 
+        $im->destroy();
+    }
+}
 
 if($form_submit){
-    $stmt = $conn->prepare("INSERT INTO category(course, unit) VALUES (?,?)");
-    $stmt->bind_param('ss', $course_code, $course_unit);
-    $pdf = $stmt->execute();
-    header('location: '.$_SERVER['PHP_SELF']);
+    uploadPDF();
 }
 
 function fetchPage(){
     global $page;
     global $per_page;
     global $conn;
-    
+
     $offset = ($per_page * $page) - $per_page;
     return $conn->query("SELECT id, link FROM pdf limit $per_page offset $offset");
 }
@@ -103,15 +125,15 @@ if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
             <span>Course Registered Successfuly...</span>
             <button class='btn-close' data-bs-dismiss='alert'></button>
         </div>
-    html;
+html;
     echo $alert;
 }
 
 ?>
             <h2>ADD NEW PDF</h2>
-            <form class='input-group'>
-                <input name='file' type='file' class='form-control' placeholder='course code' required>
-                <input  name='form-submit' type='submit' class='form-control btn btn-success' placeholder='course code' required>
+            <form action='<?php $_SERVER['PHP_SELF'] ?>' method='POST' enctype='multipart/form-data' class='input-group'>
+                <input name='pdffile' type='file' class='form-control' placeholder='course code' required>
+                <input  name='form-submit' type='submit' class='form-control btn btn-success' required>
             </form>
             <br>
             <h5>PDFs IN DATABASE</h5>
