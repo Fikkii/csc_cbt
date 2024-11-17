@@ -1,6 +1,5 @@
 <?php
 DEFINE('DB', $_SERVER['DOCUMENT_ROOT'].'/db.php');
-DEFINE('TEMPLATE', $_SERVER['DOCUMENT_ROOT'].'/template.php');
 
 include DB;
 
@@ -109,5 +108,6 @@ function html_footer(){
     HTML;
 echo $html;
 }
+
 
 ?>
