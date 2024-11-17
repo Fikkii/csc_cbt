@@ -18,9 +18,9 @@ html_header('Dashboard Home');
 
 
 <div class='row text-bg-light mx-2 p-4 border rounded'>
-    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='file-plus'></i><small>Questions</small></div>
-    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='tool'></i><small>Users</small></div>
-    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='file-text'></i><small>PDFs</small></div>
+    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='file-plus'></i><small>questions</small></div>
+    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='tool'></i><small>users</small></div>
+    <div class='d-flex col-4 flex-column align-items-center'><i data-feather='file-text'></i><small>pdfs</small></div>
 </div>
 
 <div class='card'>

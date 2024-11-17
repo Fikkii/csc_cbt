@@ -1,4 +1,5 @@
 <?php
+include 'function.php';
 $course = isset($_GET['course']) ? $_GET['course'] : '';
 
 if ($course){
@@ -7,19 +8,90 @@ if ($course){
     header("location: cbt");
 }
 
+html_header('Home', true);
 ?>
 
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    </head>
     <body style='height: 100vh'>
-        <div style='background-color: #c3a75e' class="text-white h-50 d-flex justify-content-center align-items-center gap-2 flex-column text-center p-3"> 
+        <div class='row text-bg-light mx-2 border rounded'>
+            <div class='h6 px-4 py-2'>Personal Development</div>
+            <a href='/cbt' class='d-flex col-4 flex-column align-items-center p-3'><i data-feather='file-plus'></i><small>CBT</small></a>
+            <a href='/ebook.php' class='d-flex col-4 flex-column align-items-center p-3'><i data-feather='tool'></i><small>LIBRARY</small></a>
+            <a href='https://wa.me/+2348132332408' class='d-flex col-4 flex-column align-items-center p-3'><i data-feather='file-text'></i><small>CONNECT</small></a>
+        </div>
+
+
+<div class='card'>
+    <div class='h6 px-4 py-2'>Services</div>
+    <div class='row p-3 py-1 g-2'>
+        <div class="col-6 col-sm-3">
+            <div class="card">
+                <div style='background-color: #c3a75e; height: 10px;' ></div>
+                <div class="card-body">
+                    <div class="card-title"><b>Past Questions</b></div>
+                    <a href="/cbt" class="btn btn-light border border-4 w-100 mt-2">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-3">
+            <div class="card">
+                <div style='background-color: #c3a75e; height: 10px;' ></div>
+                <div class="card-body">
+                    <div class="card-title"><b>Join Whats-group</b></div>
+                    <a href="http://wa.me/+2348132332408" class="btn btn-light border border-4 w-100 mt-2">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-3">
+            <div class="card">
+                <div style='background-color: #c3a75e; height: 10px;' ></div>
+                <div class="card-body">
+                    <div class="card-title"><b>Upcoming Events</b></div>
+                    <a href="#events" class="btn btn-light border border-4 w-100 mt-2">Show</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-sm-3">
+            <div class="card">
+                <div style='background-color: #c3a75e; height: 10px;' ></div>
+                <div class="card-body">
+                    <div class="card-title"><b>Our Contributors</b></div>
+                    <a href="#contributor" class="btn btn-light border border-4 w-100 mt-2">Show</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id='events' class='card p-3'>
+    <div class='h6'>Upcoming Events</div>
+    <div class='row p-3 g-3'>
+<?php
+$event = $conn->query('SELECT event, location, date, time FROM event');
+
+if($event->num_rows > 0){
+    while(list($name, $location, $date, $time) = $event->fetch_array()){
+        $html = <<< HTML
+            <div class='card col col-sm-6'>
+                <img class='img-card-top' height='60px' src='/images/map.png' alt='location map'>
+                <div class='card-header'>
+                    <h5 class='card-title'>$name</h5>
+                    <div>
+                        <div>Date: $date</div>
+                        <div>Time: $time</div>
+                        <span class='badge ms-1 text-bg-success'>$location</span>
+                    </div>
+                </div>
+            </div>
+        HTML;
+        echo $html;
+    }
+
+}
+?>
+    </div>
+</div>
+        <div style='background-color: #c9b75e' class="card m-3 text-white h-50 d-flex justify-content-center align-items-center gap-2 flex-column text-center p-3"> 
             <a href="./admin" class="align-self-end btn border border-3">
                 <i data-feather='user'></i>
             </a>
@@ -44,46 +116,11 @@ if ($course){
                 <p class='px-5'>If you notice any incosistency in the past questions or will like to add to it, message us @<a href="wa.me/+2348132332408" target="_blank">whatsapp</a> and stand a chance to be a CONTRIBUTOR</p>
             </div>
         </div>
-        <div class="button-group d-flex mt-2 gap-2 justify-content-center">
-            <a href="./" class="btn btn-secondary d-block w-25 active"><i class="me-3" data-feather='monitor'></i>CBT</a>
-            <a href="./ebook.php" class="btn btn-secondary d-block w-25"><i class="me-3" data-feather='book'></i>EBOOKs</a>
-        </div>
+
         <div class="container">
             <div class="row p-4 g-2">
-<?php
-include 'db.php';
-
-$conn = connect();
-
-$result = $conn->query("SELECT course FROM category");
-
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        $course = strtoupper($row['course']);
-        $template = <<<HTML
-                <div class="col-6 col-sm-4">
-                    <div class="card">
-                        <div style='background-color: #c3a75e; height: 10px;' ></div>
-                        <div class="card-body">
-                            <div class="card-title"><b>COURSE: </b>$course</div>
-                            <div class="card-title"><b>TITLE: </b>---</div>
-                            <a href="?course=csc211" class="btn btn-light border border-4 w-100 mt-2">Start</a>
-                        </div>
-                    </div>
-                </div>
-        HTML;
-        echo $template;
-    }
-}
-
-$result = $conn->query("SELECT link,thumbnail FROM pdf");
-
-?>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script>
-            feather.replace()
-        </script>
-    </body>
-</html>
+<?php
+html_footer();
+?>

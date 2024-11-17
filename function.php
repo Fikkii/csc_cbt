@@ -46,30 +46,68 @@ html;
 
 }
 
-function html_header($title){
-$html = <<< HTML
+function html_header($title, $user = false){
+//Display this if user is admin
+    $userHTML = <<< HTML
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>$title</title>
+                <link href="/assets/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+                <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+            </head>
+            <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
+                <header class='navbar p-2 rounded'>
+                    <a href='/' class='navbar-brand'>
+                        <img src='images/logo.png' height=34 class='d-inline-block align-text-center'><b>200LVL CSC</b>
+                    </a>
+                    <button class='navbar-toggler' data-bs-target='#offnavs' data-bs-toggle='offcanvas'>
+                        <span class='navbar-toggler-icon'></span>
+                    </button>
+                    <div id='offnavs' class='offcanvas offcanvas-end'>
+                        <div class='offcanvas-header p-4 text-bg-light'>
+                            <h2>ADMIN DASHBOARD</h2>
+                            <button class='btn-close' data-bs-dismiss='offcanvas'></button>
+                        </div>
+                        <div class='offcanvas-body' tabindex='-1'>
+                            <ul class='list-group mb-3'>
+                                <li class='list-group-item'><a class='nav-link' href='index.php'>Home</a></li>
+                            </ul>
+                            <ul class='list-group mb-3'>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='/cbt'>CBT</a></li>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='ebook.php'>Library</a></li>
+                            </ul>
+                            <ul class='list-group mb-3'>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='#'>Contributors</a></li>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='http://wa.me/+2348132332408'>Contact</a></li>
+                            </ul>
+                            <ul class='list-group mb-3'>
+                                <li class='list-group-item list-group-item-action'><a class='nav-link' href='#events'>Events</a></li>
+                            </ul>
+                        </div>
+                    </div>
+        </header>
+        HTML;
+$adminHTML = <<< HTML
     <html lang="en">
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Bootstrap demo</title>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+            <title>$title</title>
+            <link href="/assets/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
             <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
         </head>
         <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
-            <header class='fluid-container d-flex justify-content-between text-bg-dark p-2 rounded'>
-                <div class='dropdown'>
-                    <button class='btn' data-bs-toggle='dropdown'><i data-feather='settings'></i></button>
-                    <ul class='dropdown-menu'>
-                        <li><a  class='dropdown-item' href='settings.php' class='dropdown-item-link'>Change Password</a></li>
-                    </ul>
-                </div>
-                <h3>200LVL CSC</h3>
+            <header class='navbar p-2 rounded'>
+            <a href='/' class='navbar-brand'>
+                <img src='images/logo.png' height=24 class='d-inline-block align-text-top'>200LVL CSC
+            </a>
 
-                    <button class='navbar-toggler border-0' data-bs-toggle='offcanvas' data-bs-target='#offnav'><i data-feather='menu'></i>
-                    </button>
-                <div>
-                <div id='offnav' class='offcanvas offcanvas-end'>
+                <button class='navbar-toggler' data-bs-target='#offnavs' data-bs-toggle='offcanvas'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+                <div id='offnavs' class='offcanvas offcanvas-end'>
                     <div class='offcanvas-header p-4 text-bg-light'>
                         <h2>ADMIN DASHBOARD</h2>
                         <button class='btn-close' data-bs-dismiss='offcanvas'></button>
@@ -79,12 +117,15 @@ $html = <<< HTML
                             <li class='list-group-item'><a class='nav-link' href='index.php'>Home</a></li>
                         </ul>
                         <ul class='list-group mb-3'>
-                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='question.php'>questions</a></li>
-                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='category.php'>category</a></li>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='question.php'>Questions</a></li>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='category.php'>Category</a></li>
                         </ul>
                         <ul class='list-group mb-3'>
-                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='pdf.php'>pdf</a></li>
-                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='user.php'>user</a></li>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='pdf.php'>Pdf</a></li>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='user.php'>User</a></li>
+                        </ul>
+                        <ul class='list-group mb-3'>
+                            <li class='list-group-item list-group-item-action'><a class='nav-link' href='event.php'>Events</a></li>
                         </ul>
                     </div>
                 </div>
@@ -94,17 +135,23 @@ $html = <<< HTML
             </div>
 
 HTML;
-echo $html;
+if($user){
+    echo $userHTML;
+}else{
+    echo $adminHTML;
+}
 
 }
 
 function html_footer(){
+    global $conn;
+    $conn->close();
     $html = <<< HTML
                 <script>
                     //for feather icons...
                     feather.replace()
                 </script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+                <script src="/assets/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
             </body>
         </html>
     HTML;
