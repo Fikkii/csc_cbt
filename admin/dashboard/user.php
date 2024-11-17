@@ -92,24 +92,6 @@ if($change_id){
             </div>
         </header>
         <div>
-<?php
-//Since i perform a redirect on submission
-//i check which page they come from so as to provide feedback
-//if they request the page the second time
-
-$caller = explode('/', $_SERVER['HTTP_REFERER'])[5];
-
-if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
-    $alert = <<< html
-        <div class='alert alert-success alert-dismissible'>
-            <span>Course Registered Successfuly...</span>
-            <button class='btn-close' data-bs-dismiss='alert'></button>
-        </div>
-    html;
-    echo $alert;
-}
-
-?>
             <h2>ADD NEW COURSE</h2>
             <form class='input-group'>
                 <input name='course-code' class='form-control' placeholder='course code' required>
@@ -142,8 +124,6 @@ if($user->num_rows > 0){
                 <td>$id</td>
                 <td>$username</td>
                 <td class='w-25'>
-                        <td><a class='btn btn-warning btn-sm p-1' href='?change=$id'><i data-feather='edit'></i></a></td>
-                        <td><a class='btn btn-danger btn-sm p-1' href='?delete=$id'><i data-feather='trash'></i></a></td>
                 </td>
             </tr>
          script; 
