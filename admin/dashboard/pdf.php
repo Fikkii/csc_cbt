@@ -112,29 +112,13 @@ if($change_id){
             </div>
         </header>
         <div>
-<?php
-//Since i perform a redirect on submission
-//i check which page they come from so as to provide feedback
-//if they request the page the second time
 
-$caller = explode('/', $_SERVER['HTTP_REFERER'])[5];
-
-if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
-    $alert = <<< html
-        <div class='alert alert-success alert-dismissible'>
-            <span>Course Registered Successfuly...</span>
-            <button class='btn-close' data-bs-dismiss='alert'></button>
-        </div>
-html;
-    echo $alert;
-}
-
-?>
             <h2>ADD NEW PDF</h2>
-            <form action='<?php $_SERVER['PHP_SELF'] ?>' method='POST' enctype='multipart/form-data' class='input-group'>
+            <form onsubmit='false' action='<?php $_SERVER['PHP_SELF'] ?>' method='POST' enctype='multipart/form-data' class='input-group'>
                 <input name='pdffile' type='file' class='form-control' placeholder='course code' required>
                 <input  name='form-submit' type='submit' class='form-control btn btn-success' required>
             </form>
+            <small class='text-info'>This section has currently been discontinued, contact webmaster for more info</small>
             <br>
             <h5>PDFs IN DATABASE</h5>
             <table class="table table-hover">
