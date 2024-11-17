@@ -116,7 +116,7 @@ if($change_id){
                 <input name='pdffile' type='file' class='form-control' placeholder='course code' required disabled>
                 <input  name='form-submit' type='submit' class='form-control btn btn-success' required disabled>
             </form>
-            <b class='text-warning'>This section has currently been discontinued, contact webmaster for more info</b>
+            <b class='text-danger'>This section has currently been discontinued, contact webmaster for more info</b>
             <br>
             <h5>PDFs IN DATABASE</h5>
             <table class="table table-hover">
