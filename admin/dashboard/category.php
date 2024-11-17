@@ -27,8 +27,7 @@ if($form_submit){
     $stmt = $conn->prepare("INSERT INTO category(course, unit) VALUES (?,?)");
     $stmt->bind_param('ss', $course_code, $course_unit);
     $category = $stmt->execute();
-
-    $category = fetchPage();
+    header('location: '.$_SERVER['PHP_SELF']);
 }
 
 function fetchPage(){
@@ -95,21 +94,28 @@ if($change_id){
         </header>
         <div>
 <?php
-if($form_submit && $category){
+//Since i perform a redirect on submission
+//i check which page they come from so as to provide feedback
+//if they request the page the second time
+
+$caller = explode('/', $_SERVER['HTTP_REFERER'])[5];
+
+if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
     $alert = <<< html
         <div class='alert alert-success alert-dismissible'>
             <span>Course Registered Successfuly...</span>
             <button class='btn-close' data-bs-dismiss='alert'></button>
         </div>
     html;
+    echo $alert;
 }
 
 ?>
             <h2>ADD NEW COURSE</h2>
             <form class='input-group'>
-                <input name='course-code' class='form-control' placeholder='course code'>
+                <input name='course-code' class='form-control' placeholder='course code' required>
                 <label class='input-group-text'>Unit</label>
-                <select name='course-unit'>
+                <select name='course-unit' required>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>
@@ -117,7 +123,7 @@ if($form_submit && $category){
                     <option value='5'>5</option>
                     <option value='6'>6</option>
                 </select>
-                <input  name='form-submit'type='submit' class='form-control btn btn-success' placeholder='course code'>
+                <input  name='form-submit'type='submit' class='form-control btn btn-success' placeholder='course code' required>
             </form>
             <br>
             <h5>COURSES IN DATABASE</h5>
@@ -153,14 +159,21 @@ if($category->num_rows > 0){
 
 function paginate(){
     global $per_page;
-    global $category;
-    $fetched_rows =  $category->num_rows;
+    global $conn;
+    global $pdf;
+    global $page;
+    $fetched_rows =  $conn->query('SELECT * FROM questions')->num_rows;
 
     $total_page = floor($fetched_rows / $per_page);
 
     for ($i = 0; $i <= $total_page; $i++) {
         $current_page = $i + 1;
-        echo "<li class='page-item'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
+        if($current_page == $page){
+            echo "<li class='page-item active'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
+
+        }else{
+            echo "<li class='page-item'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
+        }
     }
 }
 

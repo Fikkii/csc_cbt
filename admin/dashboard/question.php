@@ -45,15 +45,21 @@ function insertQuestion(){
         $keyword = ['A', 'B', 'C', 'D'];
         $answers = [$A, $B, $C, $D];
         $stmt = $conn->prepare("INSERT INTO answers(id, answer, correct, keyword) VALUES (?,?,?,?)");
-        $stmt->bind_param('isis', $id, $A, $correct, $keyword);
+        $stmt->bind_param('isis', $id, $answers, $correct, $keyword);
         $keyword = $keyword[$i];
         $answers = $answers[$i];
+        if($keyword == $correct){
+            $correct = 1;
+        }else{
+            $correct = 0;
+        }
         $stmt->execute();
     }
 }
 
 if($form_submit){
     insertQuestion();
+    header('location: '.$_SERVER['PHP_SELF']);
 }
 
 $category = $conn->query("SELECT id, course FROM category");
@@ -67,9 +73,8 @@ function fetchPage(){
     return $conn->query("SELECT id, question FROM questions limit $per_page offset $offset");
 }
 
-if($page){
-    $question = fetchPage();
-}
+//This works with page no for use with pagination
+fetchPage();
 
 if($delete_id){
     $conn->query("DELETE FROM questions where id=$delete_id");
@@ -121,6 +126,25 @@ if($change_id){
             </div>
         </header>
 
+<?php
+//Since i perform a redirect on submission
+//i check which page they come from so as to provide feedback
+//if they request the page the second time
+
+$caller = explode('/', $_SERVER['HTTP_REFERER'])[5];
+
+if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
+    $alert = <<< html
+        <div class='alert alert-success alert-dismissible'>
+            <span>Question has been added Successfuly...</span>
+            <button class='btn-close' data-bs-dismiss='alert'></button>
+        </div>
+    html;
+    echo $alert;
+}
+
+?>
+
         <button class='btn btn-success' data-bs-toggle='collapse' data-bs-target='#form'>ADD QUESTIONS</button>
         <form method='POST' id='form' class='collapse'>
             <div class="form-floating">
@@ -131,30 +155,30 @@ if($change_id){
 
             <div class="d-flex flex-column gap-2">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="1">
+                    <input class="form-check-input" type="radio" name="correct" value="A" required>
                     <label class="form-check-label">A.</label>
-                    <input type="text" name="A" class="form-control w-50"></input>
+                    <input type="text" name="A" class="form-control w-50" required></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="1">
+                    <input class="form-check-input" type="radio" name="correct" value="B" required>
                     <label class="form-check-label">B.</label>
-                    <input type="text" name="B" class="form-control w-50"></input>
+                    <input type="text" name="B" class="form-control w-50" required></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="1">
+                    <input class="form-check-input" type="radio" name="correct" value="C" required>
                     <label class="form-check-label">C.</label>
-                    <input type="text" name="C" class="form-control w-50"></input>
+                    <input type="text" name="C" class="form-control w-50" required></input>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="correct" value="1">
+                    <input class="form-check-input" type="radio" name="correct" value="D" required>
                     <label class="form-check-label">D.</label>
-                    <input type="text" name="D" class="form-control w-50"></input>
+                    <input type="text" name="D" class="form-control w-50" required></input>
                 </div>
             </div>
             <div class='d-flex justify-content-between gap-3 mt-3'>
                 <div class='input-group w-50'>
                     <label class='input-group-text'>Select Course</label>
-                    <select class='form-select w-25' name="category">
+                    <select class='form-select w-25' name="category" required>
 <?php
 while(list($id, $course) = $category->fetch_array()){
     echo "<option value='$id'>$course</option>";
@@ -192,7 +216,7 @@ if($question->num_rows > 0){
         echo $data;
     }
 } else {
-    echo "<tr><td colspan='3'>No courses found.</td></tr>"; // Optional: Message when no data is found
+    echo "<tr><td colspan='3'>No questions found.</td></tr>"; // Optional: Message when no data is found
 }
 ?>
             </tbody>
@@ -201,16 +225,23 @@ if($question->num_rows > 0){
 <?php
 
 function paginate(){
-global $per_page;
-global $question;
-$fetched_rows =  $question->num_rows;
+    global $per_page;
+    global $conn;
+    global $pdf;
+    global $page;
+    $fetched_rows =  $conn->query('SELECT * FROM questions')->num_rows;
 
-$total_page = floor($fetched_rows / $per_page);
+    $total_page = floor($fetched_rows / $per_page);
 
-for ($i = 0; $i <= $total_page; $i++) {
-    $current_page = $i + 1;
-    echo "<li class='page-item'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
-}
+    for ($i = 0; $i <= $total_page; $i++) {
+        $current_page = $i + 1;
+        if($current_page == $page){
+            echo "<li class='page-item active'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
+
+        }else{
+            echo "<li class='page-item'><a href='?page=$current_page' class='page-link'>$current_page</a></li>";
+        }
+    }
 }
 
 paginate();

@@ -43,9 +43,8 @@ if($form){
 }
 ?>
             <label>username<input class="form-control" type="text" name="username" id="username" required/></label>
-            <label>password<input class="form-control" type="password" name="password" id="password"/></label>
+            <label>password<input class="form-control" type="password" name="password" id="password" required/></label>
             <input type="submit" name="submit" class="btn btn-primary ms-auto" required>
-
         </form>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
