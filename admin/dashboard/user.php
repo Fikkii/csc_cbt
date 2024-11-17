@@ -92,45 +92,14 @@ if($change_id){
             </div>
         </header>
         <div>
-<?php
-//Since i perform a redirect on submission
-//i check which page they come from so as to provide feedback
-//if they request the page the second time
-
-$caller = explode('/', $_SERVER['HTTP_REFERER'])[5];
-
-if($caller == explode("/", $_SERVER['PHP_SELF'])[3]){
-    $alert = <<< html
-        <div class='alert alert-success alert-dismissible'>
-            <span>Course Registered Successfuly...</span>
-            <button class='btn-close' data-bs-dismiss='alert'></button>
-        </div>
-    html;
-    echo $alert;
-}
-
-?>
-            <h2>ADD NEW COURSE</h2>
-            <form class='input-group'>
-                <input name='course-code' class='form-control' placeholder='course code' required>
-                <label class='input-group-text'>Unit</label>
-                <select name='course-unit' required>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                    <option value='6'>6</option>
-                </select>
-                <input  name='form-submit'type='submit' class='form-control btn btn-success' placeholder='course code' required>
-            </form>
+            <h2>REGISTERED USERS</h2>
             <br>
-            <h5>COURSES IN DATABASE</h5>
+            <h5>ADMINISTRATORS</h5>
             <table class="table table-hover">
                 <thead>
                     <tr scope='row'>
-                        <td>id</td>
-                        <td colspan=4>Courses</td>
+                        <td>Id</td>
+                        <td colspan=4>Username</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -142,8 +111,6 @@ if($user->num_rows > 0){
                 <td>$id</td>
                 <td>$username</td>
                 <td class='w-25'>
-                        <td><a class='btn btn-warning btn-sm p-1' href='?change=$id'><i data-feather='edit'></i></a></td>
-                        <td><a class='btn btn-danger btn-sm p-1' href='?delete=$id'><i data-feather='trash'></i></a></td>
                 </td>
             </tr>
          script; 
@@ -161,7 +128,7 @@ function paginate(){
     global $conn;
     global $pdf;
     global $page;
-    $fetched_rows =  $conn->query('SELECT * FROM questions')->num_rows;
+    $fetched_rows =  $conn->query('SELECT * FROM user')->num_rows;
 
     $total_page = floor($fetched_rows / $per_page);
 
