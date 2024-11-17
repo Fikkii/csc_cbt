@@ -135,10 +135,6 @@ if($pdf->num_rows > 0){
             <tr scope='row'>
                 <td>$id</td>
                 <td>$filename</td>
-                <td class='w-25'>
-                        <td><a class='btn btn-warning btn-sm p-1' href='?change=$id'><i data-feather='edit'></i></a></td>
-                        <td><a class='btn btn-danger btn-sm p-1' href='?delete=$id'><i data-feather='trash'></i></a></td>
-                </td>
             </tr>
          script; 
         echo $data;
