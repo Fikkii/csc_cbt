@@ -2,10 +2,10 @@
 function connect(){
 
 $dbconfig = [
-    'username'=> 'root',
-    'password'=> '',
-    'host'=> 'localhost',
-    'database'=> 'csc'
+    'username'=> 'm4303_fikki',
+    'password'=> 'Bunmisegun"2016',
+    'host'=> 'sql6.serv00.com',
+    'database'=> 'm4303_csc'
 ];
 
     $db = new mysqli($dbconfig['host'], $dbconfig['username'], $dbconfig['password'], $dbconfig['database']);
