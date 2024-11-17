@@ -67,7 +67,7 @@ function html_header($title, $user = false){
                     </button>
                     <div id='offnavs' class='offcanvas offcanvas-end'>
                         <div class='offcanvas-header p-4 text-bg-light'>
-                            <h2>ADMIN DASHBOARD</h2>
+                            <h2>USER DASHBOARD</h2>
                             <button class='btn-close' data-bs-dismiss='offcanvas'></button>
                         </div>
                         <div class='offcanvas-body' tabindex='-1'>
