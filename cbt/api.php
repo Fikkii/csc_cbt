@@ -1,5 +1,5 @@
 <?php
-include '/db.php';
+include '../function.php';
 
 header('content-type: text/json');
 

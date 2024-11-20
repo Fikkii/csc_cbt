@@ -95,14 +95,18 @@ function prev(){
 
 function showResult(){
     var score = 0;
+    var attempt = 0;
     $.each(questions, (index, value) => {
         if(value.selected == value.correct){
             ++score
         }
+        if(value.correct){
+            ++attempt
+        }
     })
 
     total = questions.length;
-
-    percentage = Math.round((score/total) * 100)
-    alert(percentage)
-}
+    console.log(question)
+    console.log(score)
+    window.location.href = './result.php?score='+score+'&answered='+attempt;
+};

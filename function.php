@@ -56,6 +56,8 @@ function html_header($title, $user = false){
                 <title>$title</title>
                 <link href="/assets/bootstrap.min.css" rel="stylesheet">
                 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+                <script src="/assets/script.js"></script>
+            <script src="/assets/jquery.min.js"></script>
             </head>
             <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
                 <header class='navbar p-2 rounded'>
@@ -100,6 +102,8 @@ $adminHTML = <<< HTML
             <title>$title</title>
             <link href="/assets/bootstrap.min.css" rel="stylesheet">
             <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+            <script src="/assets/script.js"></script>
+            <script src="/assets/jquery.min.js"></script>
         </head>
         <body style='height: 100vh; background-color: #c3a75e' class="d-flex flex-column gap-3 p-3">
             <header class='navbar p-2 rounded'>

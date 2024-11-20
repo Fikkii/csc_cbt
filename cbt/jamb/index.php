@@ -10,7 +10,7 @@ $total = $_SESSION['total'];
 
 if ($category && $time && $total) {
     $init_script = <<< script
-            <script>
+            <script defer>
                 var total = $total;
                 var time = $time;
                 var category = $category;
@@ -21,10 +21,10 @@ if ($category && $time && $total) {
                 }
             </script>
          script; 
+        echo $init_script;
     }else{
         header('location: ./cbt');
     }
-html_header('CBT', true)
 ?>
     <body>
         <div class='grid-container'>
@@ -43,10 +43,7 @@ html_header('CBT', true)
             </div>
             <div class='m-3' id="pagination"></div>
         </div>
-        <?php echo $init_script ?>
     </body>
-</html>
-
 <?php
 html_footer();
 ?>
