@@ -58,7 +58,7 @@ function renderQuestions(index){
     currentIndex = index;
 
     //rendering questions with options on screen
-    qElement.append(`<div class='mt-3'><b>Question ${++index}(<small>Read The questions carefully and select your question</small>)</b><div class='my-2'>${ques.question}</div></div>`);
+    qElement.append(`<div class='mt-3'><b>Question ${++index}(<small>Read The questions carefully and select your answer</small>)</b><div class='my-2'>${ques.question}</div></div>`);
     optElement.append(`<div class='row g-2 ms-3'>
         <label><input class='form-radio me-2' type='radio' name='option' id='A' ${ques['selected'] == 'A' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.A}</label>
         <label><input class='form-radio me-2' type='radio' name='option' id='B' ${ques['selected'] == 'B' ? 'checked' : ''} onclick=selectOpt(this)>${ques.option.B}</label>
@@ -104,6 +104,8 @@ function showResult(){
             ++attempt
         }
     })
+
+    localStorage.setItem('result', JSON.stringify(questions));
 
     total = questions.length;
     console.log(question)

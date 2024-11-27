@@ -3,6 +3,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/function.php';
 
 session_start();
 
+if(isset($_GET['logout'])){
+    session_destroy();
+    unset($_SESSION);
+    header('location: /');
+}
+
 if(isset($_SESSION['username'])){
     $username = $_SESSION['username'];
 }else{

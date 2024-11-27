@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bootstrap demo</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="/assets/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     </head>
     <body style='height: 100vh; background-color: #c3a75e' class="d-flex justify-content-center align-items-center">
         <form method='post' class="bg-body-tertiary text-black d-flex flex-column gap-2 align-items-center rounded p-5">
@@ -45,8 +45,9 @@ if($form){
             <label>username<input class="form-control" type="text" name="username" id="username" required/></label>
             <label>password<input class="form-control" type="password" name="password" id="password" required/></label>
             <input type="submit" name="submit" class="btn btn-primary ms-auto" required>
+        <a href='/' class='me-auto'>Back to Home</a>
         </form>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="/assets/bootstrap.bundle.min.js"></script>
     </body>
 </html>
 

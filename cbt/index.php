@@ -11,7 +11,7 @@ if($category && $time && $total){
     $_SESSION['time'] = $time;
     $_SESSION['total'] = $total;
 
-    header('location: ./jamb');
+    header('location: ./test');
 }
 
 $conn = connect();
@@ -20,7 +20,6 @@ $category = $conn->query("SELECT id, course FROM category");
 
 html_header("CBT", true);
 ?>
-    <body>
         <form class='d-flex flex-column gap-2' method='GET' action=<?php echo $_SERVER['PHP_SELF'] ?>>
             <div class='card m-sm-auto p-3 d-flex flex-column gap-3'>
                 <div class='input-group'>

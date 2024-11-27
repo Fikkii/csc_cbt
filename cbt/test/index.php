@@ -1,7 +1,7 @@
 <?php
 include '../../function.php';
 
-html_header('Text in Progress');
+html_header('Text in Progress', true);
 session_start();
 
 $category = $_SESSION['category'];
@@ -27,7 +27,7 @@ if ($category && $time && $total) {
     }
 ?>
     <body>
-        <div class='grid-container'>
+        <div class='flex-container'>
             <div class='d-flex justify-content-between'>
                 <span class='h5'>
                     Time-Remaining:
